@@ -103,8 +103,7 @@ For example, if the first call returned hotels with id [10,12] with SnapTravel p
 
 **Step 4**
 
-Host this api on AWS using the given credentials. You can choose any of the services and components offered by Amazon Web Services. Optionally, if you are not fimilar with aws but like some other cloud provider, feel free to implement it there. 
-For this take home assignment, we have created a user for you that allows you to access AWS in a specific region. The credentials provided will be valid for 1 day and terminate access after a day of creation.
+Host this api on AWS using the given credentials. You can choose any of the services and components offered by Amazon Web Services. Optionally, if you are not fimilar with aws but like some other cloud provider, feel free to implement it there. For this take home assignment, we have created a user for you that allows you to access AWS in a specific region. The credentials provided will be valid for 1 day and terminate access after a day of creation.
 
 **Mandatory requirements**:
 
