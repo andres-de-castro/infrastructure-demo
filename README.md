@@ -3,7 +3,7 @@
 This is our task for potential new infrastructure engineers. We expect this task to take less than a few hours of work.
 
 Please fork this repo and make a starting commit with the message 'start'.
-Commit your finished code and push to your forked repo when you are finished. Thanks 😄
+Commit your finished code and push to your forked repo when you are finished. Please link your hosted service endpoint here. Thanks 😄
 
 ## TODO
 
