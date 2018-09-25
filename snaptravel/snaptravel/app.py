@@ -82,7 +82,6 @@ def merge_search_responses(responses):
     snaptravel_hotel_map = {i['id']:i for i in snaptravel_hotels}
     retail_hotel_map = {i['id']:i for i in retail_hotels}
     common_ids = {i for i in snaptravel_hotel_map if i in retail_hotel_map}
-    print(common_ids)
 
     our_response = []
     for hotel_id in common_ids:
@@ -93,5 +92,4 @@ def merge_search_responses(responses):
         this_hotel = snaptravel_hotel_map[hotel_id]
         this_hotel['price'] = price_object
         our_response.append(this_hotel)
-    print(our_response)
     return our_response
