@@ -13,10 +13,15 @@ class DefaultConfig(object):
     REDIS_HOST = 'localhost'
     REDIS_URL = 'redis://{0}:6379/{1}'.format(REDIS_HOST, REDIS_DB)
 
-    flask_caching_config = {
-        'CACHE_TYPE': 'redis',
-        'CACHE_KEY_PREFIX': 'fcache',
-        'CACHE_REDIS_HOST': REDIS_HOST,
-        'CACHE_REDIS_PORT': '6379',
-        'CACHE_REDIS_URL': REDIS_URL
-    }
+    if os.getenv('production'):
+        flask_caching_config = {
+            'CACHE_TYPE': 'redis',
+            'CACHE_KEY_PREFIX': 'fcache',
+            'CACHE_REDIS_HOST': REDIS_HOST,
+            'CACHE_REDIS_PORT': '6379',
+            'CACHE_REDIS_URL': REDIS_URL
+        }
+    else:
+        flask_caching_config = {
+            'CACHE_TYPE': 'simple'
+        }
