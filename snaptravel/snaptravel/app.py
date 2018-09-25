@@ -44,7 +44,7 @@ def create_app(settings_override=None):
         checkout = request_json['checkout']
 
 
-        # @cache.memoize(timeout=300)
+        @cache.memoize(timeout=300)
         def _search(city, checkin, checkout): 
             """
             Setup a gen expression to be mapped by grequests,
