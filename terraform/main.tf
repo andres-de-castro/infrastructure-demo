@@ -147,11 +147,11 @@ resource "aws_elasticache_subnet_group" "redis_private" {
 resource "aws_elasticache_replication_group" "redis" {
   automatic_failover_enabled    = true
   availability_zones            = ["us-east-1a", "us-east-1b"]
-  replication_group_id          = "ec-rep-group-1"
+  replication_group_id          = "primary-redis"
   replication_group_description = "Main redis replication group"
   node_type                     = "cache.r4.large"
   number_cache_clusters         = 2
-  parameter_group_name          = "default.redis4.0.cluster.on"
+  parameter_group_name          = "default.redis4.0"
   port                          = 6379
   subnet_group_name             = "${aws_elasticache_subnet_group.redis_private.name}"
   security_group_ids            = ["${aws_security_group.elasticache_sg.id}"]
@@ -224,7 +224,7 @@ data "template_file" "flask_backend_task" {
   vars {
     image      = "${aws_ecr_repository.snaptravel-andres.repository_url}"
     secret_key = "${var.secret_key}"
-    redis_url  = "${aws_elasticache_replication_group.redis.configuration_endpoint_address }"
+    redis_url  = "${aws_elasticache_replication_group.redis.primary_endpoint_address}"
   }
 }
 
@@ -452,7 +452,6 @@ resource "aws_cloudwatch_metric_alarm" "service_cpu_high" {
 }
 
 # code pipeline
-
 resource "aws_s3_bucket" "source" {
   bucket        = "snaptravel-andres-s3-source"
   acl           = "private"
