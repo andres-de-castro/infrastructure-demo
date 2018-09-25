@@ -13,4 +13,4 @@ COPY . .
 
 RUN pip install --editable .
 
-CMD gunicorn "snaptravel.app:create_app()" -b 0.0.0.0:80 --timeout 90 --threads 8 --log-level debug
+CMD gunicorn "snaptravel.app:create_app()" -b 0.0.0.0:80 --workers 4 --threads 8 --log-level debug
