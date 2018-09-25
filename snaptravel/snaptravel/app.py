@@ -44,7 +44,7 @@ def create_app(settings_override=None):
         checkout = request_json['checkout']
 
 
-        @cache.memoize(timeout=300)
+        # @cache.memoize(timeout=300)
         def _search(city, checkin, checkout): 
             """
             Setup a gen expression to be mapped by grequests,
@@ -61,6 +61,9 @@ def create_app(settings_override=None):
                 ) for provider in ['snaptravel', 'retail']
             )
             responses = grequests.map(rs)
+            # guarantees that requests are in order
+            responses = sorted([response for response in responses], key=lambda x: x.request.__dict__['body'])
+            responses.reverse()
             responses = [response.json() for response in responses]
             merged_response = merge_search_responses(responses)
             return merged_response

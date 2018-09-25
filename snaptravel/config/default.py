@@ -10,7 +10,7 @@ class DefaultConfig(object):
     if os.getenv('production'):
         flask_caching_config = {
             'CACHE_TYPE': 'redis',
-            'CACHE_KEY_PREFIX': 'fcache',
+            'CACHE_KEY_PREFIX': 'redis',
             'CACHE_REDIS_PORT': '6379',
             'CACHE_REDIS_URL': REDIS_URL
         }
