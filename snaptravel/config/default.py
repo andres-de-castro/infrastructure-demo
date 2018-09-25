@@ -1,10 +1,7 @@
 import os
 
 class DefaultConfig(object):
-    DEBUG = False
-
-    SECRET_KEY = os.getenv('SECRET_KEY', b'\x07X\x1e\x9bjE!\xcd\x1c\x7f\x82P\x87\xc5+\x11\xdd\x96\x1a!\xc3\t\r\xad')
-    
+    DEBUG = False   
     REDIS_PORT = 6379
     REDIS_DB = 0
     REDIS_MAX_CONNECTIONS = 5    
