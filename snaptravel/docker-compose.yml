@@ -1,0 +1,15 @@
+version: "3"
+services:
+  redis:
+    image: redis:latest
+    deploy:
+      restart_policy:
+        condition: on-failure
+  snaptravel:
+    image: snaptravel-andres
+    command: gunicorn "snaptravel.app:create_app()" -b 0.0.0.0:8098 --timeout 90 --backlog 2048 --workers 8 --threads 8
+    ports:
+      - '8098:8098'
+    deploy:
+      restart_policy:
+        condition: on-failure
