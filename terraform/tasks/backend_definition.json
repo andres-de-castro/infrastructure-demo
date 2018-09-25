@@ -21,7 +21,7 @@
         "environment": [
             {
                 "name": "REDIS_URL",
-                "value": "${redis_url}"
+                "value": "redis://${redis_url}:6379/0"
             },
             {
                 "name": "production",
