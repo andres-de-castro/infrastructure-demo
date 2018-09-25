@@ -348,7 +348,7 @@ data "aws_ecs_task_definition" "flask_backend" {
 resource "aws_ecs_service" "flask_backend" {
   name            = "snaptravel-andres"
   task_definition = "${aws_ecs_task_definition.flask_backend.family}:${max("${aws_ecs_task_definition.flask_backend.revision}", "${data.aws_ecs_task_definition.flask_backend.revision}")}"
-  desired_count   = 2
+  desired_count   = 4
   launch_type     = "FARGATE"
   cluster         = "${aws_ecs_cluster.snaptravel-andres.id}"
   depends_on      = ["aws_iam_role_policy.ecs_service_role_policy"]
