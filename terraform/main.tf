@@ -4,6 +4,7 @@ provider "aws" {
 
 terraform {
   required_version = ">= 0.11.7"
+
   backend "s3" {
     bucket = "andres-snaptravel-tfstate"
     key    = "andres-snaptravel-tfstate"
@@ -363,6 +364,7 @@ resource "aws_ecs_service" "flask_backend" {
     container_name   = "flask_backend"
     container_port   = "80"
   }
+
   deployment_maximum_percent = 400
 
   depends_on = ["aws_alb_target_group.alb_target_group"]
