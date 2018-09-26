@@ -22,6 +22,7 @@ def create_app(settings_override=None):
     app.config.from_object('config.default.DefaultConfig')
     cache.init_app(app)
 
+
     @app.route('/hc', methods=['GET'])
     def hc():
         """
@@ -30,6 +31,7 @@ def create_app(settings_override=None):
         :return: Merged json response
         """
         return jsonify('OK !')
+
 
     @app.route('/search', methods=['POST'])
     def search():
